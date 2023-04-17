@@ -12,11 +12,14 @@ router.get('/', async(req, res, next) => {
         const url = `${weatherUrl}?key=${weatherKey}&q=20171&days=1`
       const response = await axios.get(url);
       const { current, forecast } = response.data;
+      const currentTime = new Date();
       const formattedData = {
         current: {
           temp_f: current.temp_f
         },
-        forecast: forecast.forecastday[0].hour.map(hour => ({
+        forecast: forecast.forecastday[0].hour
+        // .filter(hour => currentTime.getHours() >= new Date(hour.time).getHours())
+        .map(hour => ({
           time: hour.time,
           temp_f: hour.temp_f
         }))
