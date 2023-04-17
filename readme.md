@@ -24,6 +24,8 @@ Install the dependencies for both the backend and frontend:
 npm run install-all
 ```
 
+Create a ```.env``` file in both folders and add the secrets.
+
 Running the App
 To run the app, you need to start both the backend and frontend servers.
 
